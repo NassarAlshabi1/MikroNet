@@ -89,7 +89,7 @@ class SitesApi {
           '?-layer7-protocol',
           '?#!', 
           '?action=drop',
-          // '?disabled=no'
+          //'?disabled=no'
         ]
       );
       List<BlockedSiteModel> result = _getRegExp(response, layer7List);
@@ -186,7 +186,9 @@ class SitesApi {
     try {
       return await MikrotikClient.printData(
         commands: ["/ip/firewall/mangle/print"],
-        // conditions: ["?disabled=no"]
+        conditions: [
+          //"?disabled=no"
+          ]
       );
     } catch (e) {
       throw e.toString();
@@ -199,8 +201,8 @@ class SitesApi {
         commands: ['/ip/firewall/filter/print'],
         conditions: [
           '?action=drop',
-          // '?disabled=no'
-        ]
+          //'?disabled=no'
+          ]
       );
     } catch (e) {
       throw e.toString();
